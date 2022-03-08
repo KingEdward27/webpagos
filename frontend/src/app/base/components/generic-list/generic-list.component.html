@@ -1,0 +1,89 @@
+<ol class="breadcrumb float-xl-right">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;" translate="webpagos.adminModule"></a></li>
+    <li class="breadcrumb-item active" >{{properties.title}}</li>
+</ol>
+<h1 class="page-header">{{properties.title}} <small>Listado de {{properties.title}}</small></h1>
+
+<div class="panel panel-inverse">
+    <!-- begin panel-heading -->
+    <div class="panel-heading">
+        <h4 class="panel-title">{{properties.title}}</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i
+                    class="fa fa-redo"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="col-md-12 table">
+                <tr>
+                    <td>
+                        <div class="col-md-12 col-xs-9" style="margin-left:-15px">
+                            <button class="btn btn-orange" (click) = "goToForm()" data-toggle="modal">
+                                <i class="fa fa-plus"></i> {{'webpagos.btnNew' | translate }}
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table id="dtData{{properties.tableName}}"
+                class="col-xl-12 col-lg-12 col-sm-12 table table-sm table-striped table-bordered table-td-valign-middle">
+                <thead>
+                    <tr>
+                        <th width="1%">Nro.</th>
+                        <th *ngFor="let item of properties.columnsList" translate="webpagos.{{item.tableName}}.{{item.columnName}}">...Cargando</th>
+                        <th class="text-nowrap">{{'webpagos.actionsText' | translate}}</th>
+                        <!-- <th class="text-nowrap">{{item}}</th>
+                                        <th class="text-nowrap">{{headers[1]}}</th>
+                                        <th class="text-nowrap">{{headers[2]}}</th>
+                                        <th class="text-nowrap">{{headers[3]}}</th>
+                                        <th class="text-nowrap">{{headers[4]}}</th> -->
+                    </tr>
+                </thead>
+                <tr>
+                    <th></th>
+                    <th *ngFor="let item of properties.columnsList; index as i">
+                        <ng-container *ngIf="item.filterType == 'text'">
+                            <input type="text" class="form-control-sm"
+                            name="{{item.tableName}}.{{item.columnName}}" id="{{item.tableName}}.{{item.columnName}}" (keyUp.enter)="getListWithParams()" />
+                        </ng-container>
+                        
+                    </th>
+                    <th></th>
+                    <!-- <th><input type="text" class="form-control-sm" placeholder="{{'webpagos.searchFor' | translate}} {{'webpagos.cnfOrg.address' | translate}}" name="search-id"
+                            [(ngModel)]="modelSearch.address" (keyUp.enter)="getAllData()" /></th>
+                    <th></th>
+                    <th></th> -->
+                </tr>
+                <tbody>
+                    <!-- [disabled]="item.actInvoiceLine == null?false:true" -->
+                    <tr *ngFor="let item of listDetail; index as i">
+                        <td width="1%" class="f-w-600 text-inverse">{{i+1}}</td>
+                        <ng-container *ngFor="let itemDetail of item; index as i2">
+                            <td *ngIf="i2 > 0">{{itemDetail}}</td>
+                        </ng-container>
+                        <td>
+                            <div class="row row2">
+                                <div class="col-sm-6 col-xs-6 text-right"><a class="fas fa-edit" style="cursor: pointer;"
+                                        (click) = "goToFormToEdit(item[0])" title="Modificar"></a></div>
+                                <div class="col-sm-6 col-xs-6"><a class="fas fa-trash" (click)="delete(item[0])" style="cursor: pointer;"
+                                        title="Eliminar"></a></div>
+                            </div>
+                        </td>
+                        <!-- <td>{{item[0]}}</td>
+                                            <td>{{item.totalqty}}</td>
+                                            <td>{{item.unitvalue}}</td>
+                                            <td>{{item.linesubtotal}}</td>
+                                            <td>{{item.actInvoiceLine?.actInvoice?.documentserial}} - {{item.actInvoiceLine?.actInvoice?.documentno}}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

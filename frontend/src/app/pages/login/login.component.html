@@ -1,0 +1,70 @@
+
+	<!-- begin #page-loader -->
+	<!-- <div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div> -->
+	<!-- end #page-loader -->
+	
+	<!-- begin login-cover -->
+	<div class="login-cover">
+		<div class="login-cover-image" style="background-image: url('assets/img/login-bg/login-bg-8.jpg');" data-id="login-cover-image"></div>
+		<div class="login-cover-bg"></div>
+	</div>
+	<!-- end login-cover -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container">
+		<!-- begin login -->
+		<div class="login login-v2" data-pageload-addclass="animated fadeIn">
+			<!-- begin brand -->
+			<div class="login-header">
+				<div class="brand">
+					<span class="logo"><i class="ion-ios-cloud"></i></span> <b>CLOUD</b> DEINSOFT
+					<small>Software para control de pagos</small>
+				</div>
+				<div class="icon">
+					<i class="fa fa-lock"></i>
+				</div>
+			</div>
+			<!-- end brand -->
+			<!-- begin login-content -->
+			<div class="login-content">
+				<form [formGroup]="loginForm" (ngSubmit)="login()" name="loginForm" class="margin-bottom-0">
+					<div class="form-group m-b-20">
+						<input type="text" formControlName="username" class="form-control form-control-lg" placeholder="Username"/>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Nombre de usuario requerido</div>
+                        </div>
+					</div>
+					<div class="form-group m-b-20">
+						<input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password" required />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Contraseña requerida</div>
+                        </div>
+					</div>
+                    <br/>
+					<div class="login-buttons">
+						<button [disabled]="loading" type="submit" class="btn btn-indigo btn-block btn-lg">Ingresar <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span></button>
+					</div>
+					<div class="m-t-20">
+						¿Olvidé contraseña? Click <a href="javascript:;">aquí</a> para solicitar una nueva.
+					</div>
+				</form>
+			</div>
+			<!-- end login-content -->
+		</div>
+		<!-- end login -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-primary btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/js/app.min.js"></script>
+	<script src="assets/js/theme/apple.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="assets/js/demo/login-v2.demo.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->

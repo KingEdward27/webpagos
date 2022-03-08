@@ -1,0 +1,84 @@
+<ol class="breadcrumb float-xl-right">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;">Seguridad</a></li>
+    <li class="breadcrumb-item active">Empresa</li>
+</ol>
+<h1 class="page-header">Empresa <small>Listado de Empresa</small></h1>
+
+<div class="panel panel-inverse">
+    <!-- begin panel-heading -->
+    <div class="panel-heading">
+        <h4 class="panel-title">Empresa</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i
+                    class="fa fa-redo"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="col-md-12 table">
+                <tr>
+                    <td>
+                        <div class="col-md-12 col-xs-9" style="margin-left:-15px">
+                            <button class="btn btn-indigo" [routerLink]="['/new-company']" data-toggle="modal">
+                                <i class="fa fa-plus"></i> Nuevo
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table id="dtData"
+                class="col-xl-12 col-lg-12 col-sm-12 table table-sm table-striped table-bordered table-td-valign-middle">
+                <thead>
+                    <tr>
+                        <th width="1%">Nro.</th>
+                        <th class="text-nowrap">Nombre</th>
+                        <th class="text-nowrap">RUC</th>
+                        <th class="text-nowrap">Dirección</th>
+                        <th class="text-nowrap">Grupo empresarial</th>
+                        <th class="text-nowrap">Moneda</th>
+                        <th class="text-nowrap">Distrito</th>
+                        <th class="text-nowrap">Acciones</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th></th>
+                    <th><input type="text" class="form-control-sm" placeholder="Buscar por nombre" name="search-id"
+                            [(ngModel)]="modelSearch.name" (keyUp.enter)="getAllData()" /></th>
+                    <th><input type="text" class="form-control-sm" placeholder="Buscar por RUC" name="search-id"
+                            [(ngModel)]="modelSearch.taxid" (keyUp.enter)="getAllData()" /></th>
+                    <th><input type="text" class="form-control-sm" placeholder="Buscar por dirección" name="search-id"
+                            [(ngModel)]="modelSearch.address" (keyUp.enter)="getAllData()" /></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody>
+
+                    <tr *ngFor="let item of lista; index as i" class="odd gradeX">
+                        <td width="1%" class="f-w-600 text-inverse">{{i+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.taxid}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.cnfTenant.name}}</td>
+                        <td>{{item.cnfCurrency.isocode}}</td>
+                        <td>{{item.cnfDistrict.name}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 text-right"><a class="fas fa-edit"
+                                        [routerLink]="['/new-company', item.id]" title="Modificar"></a></div>
+                                <div class="col-sm-6 col-xs-6"><a (click)="Eliminar(item)" style="cursor: pointer;"
+                                        title="Eliminar"><i class="fa fa-trash fa-lg"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

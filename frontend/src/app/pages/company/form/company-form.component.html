@@ -1,0 +1,82 @@
+<ol class="breadcrumb float-xl-right">
+    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+    <li class="breadcrumb-item"><a href="javascript:;">Seguridad</a></li>
+    <li class="breadcrumb-item active">Empresa</li>
+</ol>
+<h1 class="page-header">Empresa <small>Mantenimiento - Empresa...</small></h1>
+
+<div class="panel panel-inverse" *ngIf="isDataLoaded">
+    <!-- begin panel-heading -->
+    <div class="panel-heading">
+        <h4 class="panel-title">Empresa</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i
+                    class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i
+                    class="fa fa-redo"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i
+                    class="fa fa-minus"></i></a>
+
+        </div>
+    </div>
+    <!-- end panel-heading -->
+    <!-- begin panel-body -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <h4 style="border-bottom: solid 1px;padding-bottom: 6px;">Registro - Empresa</h4>
+            <form class="col-sm-12" style="padding-top: 6px;">
+                <div class="form-group-sm row">
+                    <label for="name" class="col-lg-3 col-sm-12 col-form-label">Nombre <span
+                            style="color: red;font-size: 16px !important;font-weight: bold;">*</span></label>
+                    <div class="col-sm-12 col-lg-9"> 
+                        <input type="text" [(ngModel)]="model.name" maxlength="255"
+                            name="name" id="name" name="name" class="form-control-sm col-sm-12 col-lg-6"
+                            placeholder="Ingrese nombre" />
+                        <div class="alert alert-danger col-sm-12 col-lg-6" *ngIf="error?.name">{{ error.name }}</div>
+                    </div>
+                    
+                </div>
+                <div class="form-group-sm row">
+                    <label for="taxid" class="col-lg-3 col-sm-12 col-form-label">RUC <span
+                            style="color: red;font-size: 16px !important;font-weight: bold;">*</span></label>
+                    <div class="col-sm-12 col-lg-9"> <input type="text" [(ngModel)]="model.taxid" maxlength="16"
+                            name="taxid" id="taxid" name="taxid" class="form-control-sm col-sm-12 col-lg-6"
+                            placeholder="Ingrese RUC" />
+                            <div class="alert alert-danger col-sm-12 col-lg-6" *ngIf="error?.taxid">{{ error.taxid }}</div>
+                    </div>
+                    
+                </div>
+                <div class="form-group-sm row">
+                    <label for="address" class="col-lg-3 col-sm-12 col-form-label">Dirección <span
+                            style="color: red;font-size: 16px !important;font-weight: bold;">*</span></label>
+                    <div class="col-sm-12 col-lg-9"> <input type="text" [(ngModel)]="model.address" maxlength="255"
+                            name="address" id="address" name="address" class="form-control-sm col-sm-12 col-lg-6"
+                            placeholder="Ingrese dirección" />
+                        <div class="alert alert-danger col-sm-12 col-lg-6" *ngIf="error?.address">{{ error.address }}</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="form-group row">
+
+                    <div class="col-sm-12" style="padding-top: 20px;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-2 col-sm-4 col-xs-5" style="margin-left: 50x;">
+                                <button class="btn btn-default col-12" [routerLink]="['/company']"
+                                    data-toggle="modal">
+                                    <i class="fa fa-arrow-circle-left"></i> Regresar
+                                </button>
+                            </div>
+                            <div class="col-lg-2 col-sm-4 col-xs-5" style="margin-left: 20x;">
+                                <button class="btn btn-indigo col-12" (click)="save()" data-toggle="modal">
+                                    <i [ngClass]="model.id ? 'fa fa-pen' : 'fa fa-plus'"></i> {{ model.id ? 'Editar': 'Guardar' }}
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

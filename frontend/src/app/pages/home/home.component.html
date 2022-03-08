@@ -1,0 +1,256 @@
+	<!-- begin #page-loader -->
+	<!-- <div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div> -->
+	<!-- end #page-loader -->
+	<div id="page-container" class="page-header-fixed page-sidebar-fixed gradient-enabled has-scroll">
+		<!-- begin #header --> 
+		<div id="header" class="header navbar-inverse">
+			<!-- begin navbar-header -->
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand"><span class="navbar-logo"><i class="ion-ios-cloud"></i></span> <b class="mr-1">Cloud</b> DEINSOFT</a>
+				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- end navbar-header --><!-- begin header-nav -->
+			<ul class="navbar-nav navbar-right">
+				<li class="navbar-form">
+					<form action="" method="POST" name="search_form">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Enter keyword" />
+							<button type="submit" class="btn btn-search"><i class="ion-ios-search"></i></button>
+						</div>
+					</form>
+				</li>
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle icon">
+						<i class="ion-ios-notifications"></i>
+						<span class="label">5</span>
+					</a>
+					<div class="dropdown-menu media-list dropdown-menu-right">
+						<div class="dropdown-header">NOTIFICATIONS (5)</div>
+						<a href="javascript:;" class="dropdown-item media">
+							<div class="media-left">
+								<i class="fa fa-bug media-object bg-silver-darker"></i>
+							</div>
+							<div class="media-body">
+								<h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+								<div class="text-muted">3 minutes ago</div>
+							</div>
+						</a>
+						<a href="javascript:;" class="dropdown-item media">
+							<div class="media-left">
+								<img src="assets/img/user/user-1.jpg" class="media-object" alt="" />
+								<i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
+							</div>
+							<div class="media-body">
+								<h6 class="media-heading">John Smith</h6>
+								<p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+								<div class="text-muted">25 minutes ago</div>
+							</div>
+						</a>
+						<a href="javascript:;" class="dropdown-item media">
+							<div class="media-left">
+								<img src="assets/img/user/user-2.jpg" class="media-object" alt="" />
+								<i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
+							</div>
+							<div class="media-body">
+								<h6 class="media-heading">Olivia</h6>
+								<p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+								<div class="text-muted">35 minutes ago</div>
+							</div>
+						</a>
+						<a href="javascript:;" class="dropdown-item media">
+							<div class="media-left">
+								<i class="fa fa-plus media-object bg-silver-darker"></i>
+							</div>
+							<div class="media-body">
+								<h6 class="media-heading"> New User Registered</h6>
+								<div class="text-muted">1 hour ago</div>
+							</div>
+						</a>
+						<a href="javascript:;" class="dropdown-item media">
+							<div class="media-left">
+								<i class="fa fa-envelope media-object bg-silver-darker"></i>
+								<i class="fab fa-google text-warning media-object-icon f-s-14"></i>
+							</div>
+							<div class="media-body">
+								<h6 class="media-heading"> New Email From John</h6>
+								<div class="text-muted">2 hour ago</div>
+							</div>
+						</a>
+						<div class="dropdown-footer text-center">
+							<a href="javascript:;">View more</a>
+						</div>
+					</div>
+				</li><li class="dropdown navbar-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<img src="assets/img/user/user-13.jpg" alt="" /> 
+						<span class="d-none d-md-inline">Menu</span> <b class="caret"></b>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
+						<a href="javascript:;" class="dropdown-item">Setting</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" style="cursor: pointer" (click)="logout()">Cerrar Sesión</a>
+					</div>
+				</li>
+			</ul>
+			<!-- end header navigation right -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar sidebar-grid">
+			<!-- begin sidebar scrollbar -->
+			
+			<div data-scrollbar="true" data-height="100%">
+				<ul class="nav">
+					<li class="nav-profile">
+						<a href="javascript:;" data-toggle="nav-profile">
+							<div class="cover with-shadow"></div>
+							<div class="image">
+								<img src="assets/img/user/user-13.jpg" alt="" />
+							</div>
+							<div class="info">
+								<b class="caret pull-right"></b>Edward Rojas
+								<small>FullStack developer</small>
+							</div>
+						</a>
+					</li>
+					<li>
+						<ul class="nav nav-profile">
+							<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
+							<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
+							<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav">
+					<li class="nav-header">Navigation <span *ngIf="loadingMenu" class="spinner-border spinner-border-sm mr-1"></span></li>
+                    <li class="has-sub" onClick="javascript:return false;">
+						<a href="#">
+							<b class="caret"></b>
+                            <i class="fa fa-cog bg-gradient-black text-white"></i>
+                             <span title="opción 1">Configuración</span>
+							
+						</a>
+						<ng-container>
+							<ul class="sub-menu" >
+								
+								<li><a href="javascript:;" routerLink="region" routerLinkActive="on" >	Región</a></li>
+								<li><a href="javascript:;" routerLink="provincia" routerLinkActive="on" >	Provincia</a></li>
+								<li><a href="javascript:;" routerLink="distrito" routerLinkActive="on" >	Distrito</a></li>
+								<li><a href="javascript:;" routerLink="moneda" routerLinkActive="on" >	Moneda</a></li>
+								<li><a href="javascript:;" routerLink="empresa" routerLinkActive="on" >	Empresa</a></li>
+								<li><a href="javascript:;" routerLink="empresa" routerLinkActive="on" >	Local</a></li>
+								<li><a href="javascript:;" routerLink="empresa" routerLinkActive="on" >	Tipo de documento de identidad</a></li>
+								<li><a href="javascript:;" routerLink="empresa" routerLinkActive="on" >	Tipo de comprobante</a></li>
+								<li><a href="javascript:;" routerLink="empresa" routerLinkActive="on" >	Numeración de comprobante</a></li>
+								<li><a href="javascript:;" routerLink="region" routerLinkActive="on" >	Planes</a></li>
+							</ul>
+						</ng-container>
+					</li>
+					<li class="has-sub" onClick="javascript:return false;">
+						<a href="#">
+							<b class="caret"></b>
+                            <i class="fa fa-cog bg-gradient-black text-white"></i>
+                             <span title="opción 1">Inventario</span>
+							
+						</a>
+						<ng-container>
+							<ul class="sub-menu" >
+								
+								<li><a href="javascript:;" routerLink="region" routerLinkActive="on" >	Almacén</a></li>
+							</ul>
+						</ng-container>
+					</li>
+					<li class="has-sub" onClick="javascript:return false;">	
+						<a href="#">
+							<b class="caret"></b>
+                            <i class="fa fa-cog bg-gradient-black text-white"></i>
+                             <span title="opción 1">Ventas</span>
+							
+						</a>
+						<ng-container>
+							<ul class="sub-menu" >
+								
+								<li><a href="javascript:;" routerLink="region" routerLinkActive="on" >	Contratos</a></li>
+								<li><a href="javascript:;" routerLink="region" routerLinkActive="on" >	Pagos</a></li>
+							</ul>
+						</ng-container>
+					</li>
+					<!-- <ng-container *ngFor="let module of modules; index as i;">
+                        <li *ngIf="authorities | containsAuthority: module.secNodeAction.secNode.name" class="has-sub" onClick="javascript:return false;">
+                            <a href="#">
+                                <b *ngIf="module.listSecMenu.length > 0" class="caret"></b>
+                                <i class="{{module.icon}} bg-gradient-black text-white"></i>
+                                <span title="{{module.description}}">{{module.secNodeAction.secNode.description}}</span>
+                            </a>
+                                <ng-container *ngIf="module.listSecMenu.length > 0"> 
+                                    <ul class="sub-menu" >
+										<ng-container *ngFor="let mop of module.listSecMenu; let j =index;">
+											<ng-container *ngIf="authorities | containsAuthority: mop.secNodeAction.secNode.name + '_view'">
+												<li *ngIf="mop.secNodeAction.secNode != null && mop.secNodeAction.secNode.name != null" onClick="javascript:return false;">
+													<a href="javascript:;" routerLink="{{mop.secNodeAction.secNode.name}}" routerLinkActive="on" >
+														<span>{{mop.secNodeAction.secNode.description}}</span>
+													</a>
+												</li>
+											</ng-container>
+										</ng-container>										
+                                        <ng-container *ngFor="let mo of module.listSecMenu; let j =index;">    
+											<ng-container *ngIf="authorities | containsAuthority: mo.secNodeAction.secNode.name">
+												<li *ngIf="mo.listSecMenu.length > 0" class="has-sub">
+													<a href="javascript:;" >
+														<b class="caret"></b>
+														<span>{{mo.secNodeAction.secNode.name}}</span>
+													</a>
+													<ul class="sub-menu">
+														<ng-container *ngFor="let subOption of mo.listSecMenu; index as k">
+															<ng-container *ngIf="authorities | containsAuthority: subOption.secNodeAction.secNode.name">
+																<li><a href="javascript:;"><span class="nav-text">{{subOption.secNodeAction.secNode.name}}</span></a></li>
+															</ng-container>
+														</ng-container>
+													</ul>
+												</li>
+											</ng-container>
+                                        </ng-container>
+                                </ul>
+                                </ng-container>
+                        </li> 
+                    </ng-container>-->
+					
+					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ion-ios-arrow-back"></i> <span>Minimizar</span></a></li>
+					
+				</ul>
+				
+			</div> 
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<router-outlet></router-outlet>
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin theme-panel -->
+		<div class="theme-panel theme-panel-lg" style="display: none;">
+			<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+			<div class="theme-panel-content">
+				<input type="checkbox" #fheader class="custom-control-input" name="header-fixed" id="headerFixed" value="1"  style="display: none;"/>
+				<input type="checkbox" #fsidebar class="custom-control-input" name="sidebar-fixed" id="sidebarFixed" value="1" style="display: none;"/>
+			</div>
+		</div>
+		<!-- end theme-panel -->
+		<!-- begin scroll to top btn -->
+		
+		
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-primary btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>

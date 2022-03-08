@@ -1,0 +1,85 @@
+{
+  "webpagos": {
+    "securityModule": "Seguridad",
+    "adminModule": "Administrador del sistema",
+    "salesModule": "Ventas",
+    "register": "Registro",
+    "btnSearch":"Consultar",
+    "btnExportPDF":"Exportar a PDF",
+    "btnExportExcel":"Exportar a Excel",
+    "btnBack":"Regresar",
+    "btnEdit":"Modificar",
+    "btnSave":"Guardar",
+    "btnSaveAndClose":"Guardar y cerrar",
+    "btnProcess":"Procesar",
+    "btnCancel":"Cancelar",
+    "btnDelete":"Eliminar",
+    "btnState":"Cambiar Estado",
+    "btnInvalidate":"Anular",
+    "btnNew":"Nuevo",
+    "btnPrint":"Imprimir",
+    "btnAdd":"Añadir",
+    "btnComplete":"Completar",
+    "btnGenerateInvoice":"Generar Factura",
+    "btnGenerateDocument":"Generar Guía",
+    "btnAccept":"Aceptar",
+    "actionsText": "Acciones",
+    "txtNoCoincidences":"No hay coincidenciaaas",
+    "incorrectFormatEmail":"Formato de correo electrónico inválido",
+    "searchFor":"Buscar por",
+    "noRows":"No se encontraron registros",
+    "messages":{
+      "errorSearchActInvoice":"Debe ingresar el Nro. de serie y el Nro. de documento para buscar"
+    },
+    "cnf_empresa": {
+      "home": {
+        "title": "Empresa",
+        "subTitleForm": " Mantenimiento de Centro de Costo",
+        "subTitleList": " Listado de Centros de Costo"
+      },
+      "id": "ID",
+      "nombre": "Empresa",
+      "direccion": "Direccion"
+    },
+    "cnf_moneda": {
+      "home": {
+        "title": "Moneda",
+        "subTitleForm": " Mantenimiento de Centro de Costo",
+        "subTitleList": " Listado de Centros de Costo"
+      },
+      "id": "ID",
+      "nombre": "Moneda",
+      "isocode": "Codigo ISO",
+      "descripcion": "Descripción",
+      "validini": "Valido desde",
+      "validfin": "Válido hasta"
+    },
+    "cnf_distrito": {
+      "home": {
+        "title": "Empresa",
+        "subTitleForm": " Mantenimiento de Centro de Costo",
+        "subTitleList": " Listado de Centros de Costo"
+      },
+      "id": "ID",
+      "nombre": "Distrito"
+    },
+    "cnf_provincia": {
+      "home": {
+        "title": "Empresa",
+        "subTitleForm": " Mantenimiento de Centro de Costo",
+        "subTitleList": " Listado de Centros de Costo"
+      },
+      "id": "ID",
+      "nombre": "Provincia"
+    },
+    "cnf_region": {
+      "home": {
+        "title": "Empresa",
+        "subTitleForm": " Mantenimiento de Centro de Costo",
+        "subTitleList": " Listado de Centros de Costo"
+      },
+      "id": "ID",
+      "nombre": "Departamento"
+    }
+  }
+}

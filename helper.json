@@ -1,0 +1,1722 @@
+{
+    _comment: "comment text goes here...",
+    configuration:{
+        modelsPath:"backend/src/main/java/deinsoft/model",
+        repositoryPath:"backend/src/main/java/deinsoft/repository",
+        servicePath:"backend/src/main/java/deinsoft/service",
+        controllerPath:"backend/src/main/java/deinsoft/controller",
+        frontendPath:"frontend/src/app/pages",
+        pathModule: "./pages"
+    },
+    tables:
+        [   
+            {
+                tableName: "cnf_currency",
+                title: "Monedas",
+                childTables:[{tableName: "cnf_currencydata",tableNameDetail: "cnf_currencydata",idValue:"cnf_currency_id",columnsForm: [
+                                                                                                                            {columnName:"name",inputType:"text"},
+                                                                                                                            {columnName:"nameplural",inputType:"text"},
+                                                                                                                            {columnName:"symbol",inputType:"text"},
+                                                                                                                            {columnName:"validfrom",inputType:"text"},
+                                                                                                                            {columnName:"validto",inputType:"text"}
+                                                                                                                        ]
+                            }],
+                columnsForm: [
+                                    {columnName:"isocode",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"isocode",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_currencydata",
+                title: "Detalle de Monedas",
+                foreignTables:[
+                    {tableName: "cnf_currency",idValue:"cnf_currency_id",descriptionColumn : "isocode"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"nameplural",inputType:"text"},
+                                    {columnName:"symbol",inputType:"text"},
+                                    {columnName:"validfrom",inputType:"text"},
+                                    {columnName:"validto",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"nameplural",filterType:"text"},
+                                    {columnName:"symbol",filterType:"text"},
+                                    {columnName:"validfrom",filterType:"text"},
+                                    {columnName:"validto",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+
+            },
+            {
+                tableName: "cnf_docidtype",
+                title: "Tipos de documento de identidad",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+
+            },
+            {
+                tableName: "cnf_country",
+                title: "Países",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"isocode",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"isocode",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_region",
+                title: "Regiones",
+                foreignTables:[
+                    {tableName: "cnf_country",idValue:"cnf_country_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_province",
+                title: "Provincias",
+                foreignTables:[
+                    {tableName: "cnf_region",idValue:"cnf_region_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_district",
+                title: "Distritos",
+                foreignTables:[
+                    {tableName: "cnf_province",idValue:"cnf_province_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_tenant",
+                title: "Grupo empresarial",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:false,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_bpgroup",
+                title: "Grupo de Socios de Negocio",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"id",descriptionColumn : "name"}
+                   ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_company",
+                title: "Empresa",
+                foreignTables:[
+                               {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                               {tableName: "cnf_currency",idValue:"cnf_currency_id",descriptionColumn : "isocode"},
+                               {tableName: "cnf_district",idValue:"cnf_district_id",descriptionColumn : "name"}
+                              ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"taxid",inputType:"text"},
+                                    {columnName:"address",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"taxid",filterType:"text"},
+                                    {columnName:"address",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:false,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_org",
+                title: "Organización",
+                foreignTables:[
+                               {tableName: "cnf_company",idValue:"cnf_company_id",descriptionColumn : "name"},
+                               {tableName: "cnf_district",idValue:"cnf_district_id",descriptionColumn : "name"}
+                              ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"address",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"address",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:false,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "inv_warehouse",
+                title: "Almacen",
+                foreignTables:[
+                                {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"}
+                              ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_role",
+                title: "Perfiles",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_user",
+                title: "Usuarios",
+                childTables:[{tableName: "sec_role",tableNameDetail: "sec_role_user",idValue:"sec_role_id",columnsForm: [
+                                                                                        {tableName: "sec_role",columnName:"description",inputType:"text"}]
+                    }],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"email",inputType:"email"},
+                                    {columnName:"password",inputType:"password"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"email",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "1",
+                columnState: "isactive"
+
+            },
+            {
+                tableName: "sec_role_user",
+                title: "",
+                foreignTables:[
+                                {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"},
+                                {tableName: "sec_role",idValue:"sec_role_id",descriptionColumn : "name"},
+                                {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                                {tableName: "cnf_company",idValue:"cnf_company_id",descriptionColumn : "name"},
+                                {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"}
+                              ],
+                generateFrontend: false,
+                regenerate:false,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_action",
+                title: "Acciones",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_node",
+                title: "Nodos",
+                childTables:[{tableName: "sec_action",tableNameDetail: "sec_node_action",idValue:"sec_action_id"
+                        ,columnsForm: [
+                                            {columnName:"name",inputType:"select"}]}
+                ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_node_action",
+                title: "Acciones",
+                foreignTables:[
+                    {tableName: "sec_node",idValue:"sec_node_id",descriptionColumn : "name"},
+                    {tableName: "sec_action",idValue:"sec_action_id",descriptionColumn : "name"}
+                  ],
+                
+                generateFrontend: false,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_menu",
+                title: "Opciones de menú",
+                foreignTables:[
+                    {tableName: "sec_menu",idValue:"parent_id",descriptionColumn : "name"},
+                    {tableName: "sec_node_action",idValue:"sec_node_action_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"seqorder",inputType:"text"},
+                                    {columnName:"icon",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"seqorder",filterType:"text"},
+                                    {columnName:"icon",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_uom",
+                title: "Unidad de medida",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"nameplural",inputType:"text"},
+                                    {columnName:"isocode",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"nameplural",filterType:"text"},
+                                    {columnName:"isocode",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_brand",
+                title: "Marcas",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "inv_location",
+                title: "Ubicaciones de almacen",
+                foreignTables:[
+                    {tableName: "inv_warehouse",idValue:"inv_warehouse_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_bpartner",
+                title: "Socios de negocio",
+                foreignTables:[
+                    {tableName: "cnf_docidtype",idValue:"cnf_docidtype_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpgroup",idValue:"cnf_bpgroup_id",descriptionColumn : "name"},
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_district",idValue:"cnf_district_id",descriptionColumn : "name"}
+                  ],
+                childTables:[{tableName: "cnf_bpartner_contact",tableNameDetail: "cnf_bpartner_contact",idValue:"cnf_bpartner_contact_id",columnsForm: [
+                                    {tableName: "cnf_bpartner_contact",columnName:"name",inputType:"text"},
+                                    {tableName: "cnf_bpartner_contact",columnName:"description",inputType:"text"},
+                                    {tableName: "cnf_bpartner_contact",columnName:"email",inputType:"text"},
+                                    {tableName: "cnf_bpartner_contact",columnName:"phoneno1",inputType:"text"},
+                                    {tableName: "cnf_bpartner_contact",columnName:"phoneno2",inputType:"text"},
+                                    {tableName: "cnf_bpartner_contact",columnName:"phoneno3",inputType:"text"}]},
+                            {tableName: "cnf_bpartner_location",tableNameDetail: "cnf_bpartner_location",idValue:"cnf_bpartner_location_id",columnsForm: [
+                                {tableName: "cnf_bpartner_location",columnName:"name",inputType:"text"},
+                                {tableName: "cnf_bpartner_location",columnName:"address",inputType:"text"},
+                                {tableName: "cnf_district",columnName:"name",inputType:"text"}]
+                }],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"taxid",inputType:"text"},
+                                    {columnName:"address",inputType:"text"},
+                                    {columnName:"creditdays",inputType:"text"}
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"taxid",filterType:"text"},
+                                    {columnName:"address",filterType:"text"},
+                                    {columnName:"creditdays",filterType:"text"}
+                                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "1",
+                columnState: "isactive"                
+            },
+            {
+                tableName: "cnf_bpartner_contact",
+                title: "Contactos de Socios de Negocio",
+                foreignTables:[
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                    {columnName:"name",inputType:"text"},
+                    {columnName:"description",inputType:"text"},
+                    {columnName:"email",inputType:"text"},
+                    {columnName:"phoneno1",inputType:"text"},
+                    {columnName:"phoneno2",inputType:"text"},
+                    {columnName:"phoneno3",inputType:"text"}
+                ],
+                columnsList: 
+                [
+                    {columnName:"name",filterType:"text"},
+                    {columnName:"description",filterType:"text"},
+                    {columnName:"email",filterType:"text"},
+                    {columnName:"phoneno1",filterType:"text"},
+                    {columnName:"phoneno2",filterType:"text"},
+                    {columnName:"phoneno3",filterType:"text"}
+                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "cnf_bpartner_location",
+                title: "Ubicación de Socios de negocio",
+                foreignTables:[
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "cnf_district",idValue:"cnf_district_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                    {columnName:"name",inputType:"text"},
+                    {columnName:"address",inputType:"text"}
+                ],
+                columnsList: 
+                [
+                    {columnName:"name",filterType:"text"},
+                    {columnName:"address",filterType:"text"}
+                ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "sec_permission",
+                title: "Permisos",
+                foreignTables:[
+                    {tableName: "sec_role",idValue:"sec_role_id",descriptionColumn : "name"},
+                    {tableName: "sec_node_action",idValue:"sec_node_action_id",descriptionColumn : "name"}
+                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            }
+            ,
+            {
+                tableName: "flt_vehiclegroup",
+                title: "Grupo Vehicular",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                        {columnName:"name",inputType:"text"}
+                    ],
+                    columnsList: 
+                    [
+                        {columnName:"name",filterType:"text"}
+                    ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            }
+            ,
+            {
+                tableName: "flt_vehicle",
+                title: "Vehículos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "flt_vehiclegroup",idValue:"flt_vehiclegroup_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                                      {columnName:"value",inputType:"text"},
+                                      {columnName:"limittype",inputType:"text"},
+                                      {columnName:"amtlimit",inputType:"number"},
+                                      {columnName:"vollimit",inputType:"number"},
+                                      {columnName:"amtaccum",inputType:"number"},
+                                      {columnName:"volaccum",inputType:"number"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"value",filterType:"text"},
+                                    {columnName:"limittype",filterType:"text"},
+                                    {columnName:"amtlimit",filterType:"number"},
+                                    {columnName:"vollimit",filterType:"number"},
+                                    {columnName:"amtaccum",filterType:"number"},
+                                    {columnName:"volaccum",filterType:"number"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+
+            },
+            {
+                tableName: "flt_vehicle_auth",
+                title: "Autorización de vehiculos ",
+                foreignTables:[
+                    {tableName: "flt_vehicle",idValue:"flt_vehicle_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                                      {columnName:"authtype",inputType:"text"},
+                                      {columnName:"authdata",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"authtype",filterType:"text"},
+                                    {columnName:"authdata",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "flt_agreement",
+                title: "Acuerdos de flota vehicular",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"}
+                  ],
+                childTables:[{tableName: "flt_vehiclegroup",tableNameDetail: "flt_agreement_vehiclegroup",
+                    idValue:"flt_agreement_id"
+                    ,columnsForm: [
+                                        {tableName:"flt_vehiclegroup", columnName:"name",inputType:"select"},
+                                        {tableName:"flt_agreement_vehiclegroup", columnName:"validfrom",inputType:"text"},
+                                        {tableName:"flt_agreement_vehiclegroup", columnName:"validto",inputType:"text"}
+                                        ]}
+                ],
+                  columnsForm: [
+                                      {columnName:"name",inputType:"text"},
+                                      {columnName:"agreementtype",inputType:"text"},
+                                      {columnName:"vollimit",inputType:"number"},
+                                      {columnName:"amtlimit",inputType:"number"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"agreementtype",filterType:"text"},
+                                    {columnName:"vollimit",filterType:"number"},
+                                    {columnName:"amtlimit",filterType:"number"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "flt_agreement_vehiclegroup",
+                title: "Acuerdos de flota vehicular ",
+                foreignTables:[
+                    {tableName: "flt_agreement",idValue:"flt_agreement_id",descriptionColumn : "name"},
+                    {tableName: "flt_vehiclegroup",idValue:"flt_vehiclegroup_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                                {columnName:"validfrom",inputType:"text"},
+                                {columnName:"validto",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"validfrom",filterType:"text"},
+                                        {columnName:"validto",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "cnf_producttype",
+                title: "Tipo de Artículos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                  columnsForm: [
+                                {columnName:"name",inputType:"text"},
+                                {columnName:"value",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "cnf_productcategory",
+                title: "Categoría de Artículos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_producttype",idValue:"cnf_producttype_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                {columnName:"name",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"name",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "cnf_product",
+                title: "Artículos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_producttype",idValue:"cnf_producttype_id",descriptionColumn : "name"},
+                    {tableName: "cnf_productcategory",idValue:"cnf_productcategory_id",descriptionColumn : "name"},
+                    {tableName: "cnf_brand",idValue:"cnf_brand_id",descriptionColumn : "name"},
+                    {tableName: "cnf_uom",idValue:"cnf_uom_id",descriptionColumn : "name"}
+                  ],
+                  childTables:[
+                      {tableName: "cnf_product_upc",tableNameDetail: "cnf_product_upc",
+                        idValue:"cnf_product_upc_id"
+                        ,columnsForm: [
+                                        {tableName:"cnf_product_upc", columnName:"value",inputType:"text"}
+                                        ]}
+                ],
+                  columnsForm: [
+                                {columnName:"name",inputType:"text"},
+                                {columnName:"value",inputType:"text"},
+                                {columnName:"isinventory",inputType:"text"},
+                                {columnName:"iscomposite",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"},
+                                    {columnName:"isinventory",filterType:"text"},
+                                    {columnName:"iscomposite",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "cnf_product_upc",
+                title: "Códigos de Artículos",
+                foreignTables:[
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                {columnName:"value",inputType:"text"}
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"value",filterType:"text"}
+                                  ],
+                generateFrontend: true,
+                regenerate:true,
+                typeDeleteVoid: "2"
+            },
+            {
+                tableName: "cnf_doctype",
+                title: "Tipos de documento",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"},
+                                    {columnName:"action",inputType:"text"},
+                                    {columnName:"isebi",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"},
+                                    {columnName:"action",filterType:"text"},
+                                    {columnName:"isebi",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+
+            },
+            {
+                tableName: "cnf_scriptlang",
+                title: "Lenguajes de scripts",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"},
+                                    {columnName:"classname",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"},
+                                    {columnName:"classname",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_scripttype",
+                title: "Tipos de scripts",
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_script",
+                title: "Scripts",
+                foreignTables:[
+                    {tableName: "cnf_scriptlang",idValue:"cnf_scriptlang_id",descriptionColumn : "name"},
+                    {tableName: "cnf_scripttype",idValue:"cnf_scripttype_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"description",inputType:"text"},
+                                    {columnName:"content",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"description",filterType:"text"},
+                                    {columnName:"content",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "inv_movementtype",
+                title: "Tipos de movimiento",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"nature",inputType:"text"},
+                                    {columnName:"iscosted",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"nature",filterType:"text"},
+                                    {columnName:"iscosted",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_serialnumber",
+                title: "Numeración de documentos",
+                foreignTables:[
+                    {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"},
+                    {tableName: "cnf_doctype",idValue:"cnf_doctype_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"documentserial",inputType:"text"},
+                                    {columnName:"documentno",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"documentserial",filterType:"text"},
+                                    {columnName:"documentno",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_pricelist",
+                title: "Lista de precios",
+                foreignTables:[
+                    {tableName: "cnf_currency",idValue:"cnf_currency_id",descriptionColumn : "isocode"},
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_pricelist",idValue:"parent_id",descriptionColumn : "name"}
+                  ],
+                  childTables:[
+                      {tableName: "cnf_pricelist_price",tableNameDetail: "cnf_pricelist_price",
+                        idValue:"cnf_pricelist_price_id"
+                        ,columnsForm: [
+                                        {tableName:"cnf_product", columnName:"name",inputType:"text"},
+                                        {tableName:"cnf_pricelist_price", columnName:"price",inputType:"text"},
+                                        {tableName:"cnf_pricelist_price", columnName:"pricelimit",inputType:"text"}
+                                        ]},
+                      {tableName: "cnf_pricelist_modifier",tableNameDetail: "cnf_pricelist_modifier",
+                                            idValue:"cnf_pricelist_modifier_id"
+                                            ,columnsForm: [
+                                                            {tableName:"cnf_product", columnName:"name",inputType:"text"},
+                                                            {tableName:"cnf_script", columnName:"name",inputType:"text"},
+                                                            {tableName:"cnf_pricelist_modifier", columnName:"args",inputType:"text"}
+                                                            ]}
+                ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_pricelist_price",
+                title: "Lista de precios",
+                foreignTables:[
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"},
+                    {tableName: "cnf_pricelist",idValue:"cnf_pricelist_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"price",inputType:"text"},
+                                    {columnName:"pricelimit",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"price",filterType:"text"},
+                                    {columnName:"pricelimit",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_pricelist_modifier",
+                title: "Modificadores de lista de precios",
+                foreignTables:[
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"},
+                    {tableName: "cnf_pricelist",idValue:"cnf_pricelist_id",descriptionColumn : "name"},
+                    {tableName: "cnf_script",idValue:"cnf_script_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"args",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"args",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            }
+            ,
+            {
+                tableName: "act_chance",
+                title: "Oportunidad de venta",
+                foreignTables:[
+                    {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner_contact",idValue:"cnf_bpartner_contact_id",descriptionColumn : "name"},
+                    {tableName: "cnf_productcategory",idValue:"cnf_productcategory_id",descriptionColumn : "name"},
+                    {tableName: "cnf_currency",idValue:"cnf_currency_id",descriptionColumn : "isocode"},
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"}
+                  ],
+                  childTables:[
+                      {tableName: "act_chance_followup",tableNameDetail: "act_chance_followup",
+                        idValue:"act_chance_followup_id"
+                        ,columnsForm: [
+                                        {tableName:"sec_user", columnName:"sec_user_id",inputType:"text"},
+                                        {tableName:"act_chance_followup", columnName:"created",inputType:"text"},
+                                        {tableName:"act_chance_followup", columnName:"description",inputType:"text"},
+                                        {tableName:"cnf_bpartner_contact", columnName:"cnf_bpartner_contact",inputType:"text"}
+                                        ]}
+                ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"created",inputType:"text"},
+                                    {columnName:"estimateincome",inputType:"text"},
+                                    {columnName:"status",inputType:"text"},
+                                    {columnName:"priority",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"created",filterType:"text"},
+                                    {columnName:"estimateincome",filterType:"text"},
+                                    {columnName:"status",filterType:"text"},
+                                    {columnName:"priority",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_chance_followup",
+                title: "Seguimiento de oportunidad de venta",
+                foreignTables:[
+                    {tableName: "act_chance",idValue:"act_chance_id",descriptionColumn : "name"},
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner_contact",idValue:"cnf_bpartner_contact_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"created",inputType:"text"},
+                                    {columnName:"description",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"created",filterType:"text"},
+                                    {columnName:"description",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_exchangerate",
+                title: "Tipo de cambio",
+                foreignTables:[
+                    {tableName: "cnf_currency",idValue:"from_currency_id",descriptionColumn : "name"},
+                    {tableName: "cnf_currency",idValue:"to_currency_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"dateacct",inputType:"text"},
+                                    {columnName:"officialsale",inputType:"number"},
+                                    {columnName:"officialpurchase",inputType:"number"},
+                                    {columnName:"internalsale",inputType:"text"},
+                                    {columnName:"internalpurchase",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"officialsale",filterType:"number"},
+                                    {columnName:"officialpurchase",filterType:"number"},
+                                    {columnName:"internalsale",filterType:"text"},
+                                    {columnName:"internalpurchase",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: false
+            }
+            ,
+            {
+                tableName: "act_order",
+                title: "Ventas",
+                foreignTables:[
+                    {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"},
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner_contact",idValue:"cnf_bpartner_contact_id",descriptionColumn : "name"},
+                    {tableName: "inv_warehouse",idValue:"inv_warehouse_id",descriptionColumn : "name"},
+                    {tableName: "act_chance",idValue:"act_chance_id",descriptionColumn : "name"},
+                  ],
+                  childTables:[
+                      {tableName: "act_order_line",tableNameDetail: "act_order_line",
+                        idValue:"act_order_line_id"
+                        ,columnsForm: [
+                                        {tableName:"cnf_product", columnName:"name",inputType:"text"},
+                                        {tableName:"act_order_line",columnName:"unitprice",inputType:"text"},
+                                        {tableName:"act_order_line",columnName:"qty",inputType:"number"},
+                                        {tableName:"act_order_line",columnName:"linetotal",inputType:"number"},
+                                        {tableName:"act_order_line",columnName:"taxcondition",inputType:"text"}
+                                        ]}
+                ],
+                columnsForm: [
+                                    {columnName:"dateacct",inputType:"text"},
+                                    {columnName:"documentno",inputType:"number"},
+                                    {columnName:"isinventory",inputType:"number"},
+                                    {columnName:"status",inputType:"text"},
+                                    {columnName:"grandtotal",inputType:"text"},
+                                    {columnName:"description",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"documentno",filterType:"number"},
+                                    {columnName:"isinventory",filterType:"number"},
+                                    {columnName:"status",filterType:"text"},
+                                    {columnName:"grandtotal",filterType:"text"},
+                                    {columnName:"description",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_order_line",
+                title: "Detalle de Venta",
+                foreignTables:[
+                    {tableName: "act_order",idValue:"act_order_id",descriptionColumn : "name"},
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"unitprice",inputType:"text"},
+                                    {columnName:"qty",inputType:"number"},
+                                    {columnName:"linetotal",inputType:"number"},
+                                    {columnName:"taxcondition",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"unitprice",filterType:"text"},
+                                    {columnName:"qty",filterType:"number"},
+                                    {columnName:"linetotal",filterType:"number"},
+                                    {columnName:"taxcondition",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            }
+            ,
+            {
+                tableName: "cnf_salesgroup",
+                title: "Grupos de Venta",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                    
+                  ],
+                childTables:[
+                    {tableName: "cnf_salesgroup_user",tableNameDetail: "cnf_salesgroup_user",
+                      idValue:"cnf_salesgroup_user_id"
+                      ,columnsForm: [
+                                      {tableName:"sec_user",columnName:"name",inputType:"text"}
+                                      ]}
+               ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_salesgroup_user",
+                title: "Grupos de Venta por Usuario",
+                foreignTables:[
+                    {tableName: "cnf_salesgroup",idValue:"cnf_salesgroup_id",descriptionColumn : "name"},
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"}
+                    
+                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            }
+            ,
+            {
+                tableName: "cnf_tax",
+                title: "Impuestos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                    
+                  ],
+                childTables:[
+                    {tableName: "cnf_tax_detail",tableNameDetail: "cnf_tax_detail",
+                      idValue:"cnf_tax_detail_id"
+                      ,columnsForm: [
+                                      {tableName:"cnf_tax_detail",columnName:"validfrom",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"validto",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"variablerate",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"unitrate",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"fixedrate",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"minbaseamt",inputType:"text"},
+                                      {tableName:"cnf_tax_detail",columnName:"maxbaseamt",inputType:"text"}
+                                      ]}
+               ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_tax_detail",
+                title: "Detalle de Impuestos",
+                foreignTables:[
+                    {tableName: "cnf_tax",idValue:"cnf_tax_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                    {columnName:"validfrom",inputType:"text"},
+                                    {columnName:"validto",inputType:"text"},
+                                    {columnName:"variablerate",inputType:"text"},
+                                    {columnName:"unitrate",inputType:"text"},
+                                    {columnName:"fixedrate",inputType:"text"},
+                                    {columnName:"minbaseamt",inputType:"text"},
+                                    {columnName:"maxbaseamt",inputType:"text"}
+
+                ],
+                columnsList: 
+                                [
+                                    {columnName:"validfrom",filterType:"text"},
+                                    {columnName:"validto",filterType:"text"},
+                                    {columnName:"variablerate",filterType:"text"},
+                                    {columnName:"unitrate",filterType:"text"},
+                                    {columnName:"fixedrate",filterType:"text"},
+                                    {columnName:"minbaseamt",filterType:"text"},
+                                    {columnName:"maxbaseamt",filterType:"text"}
+                                ],  
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            }
+            ,
+            {
+                tableName: "cnf_taxcondition",
+                title: "Condición de Impuestos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                    
+                  ],
+                childTables:[
+                    {tableName: "cnf_tax",tableNameDetail: "cnf_taxcondition_tax",
+                      idValue:"cnf_taxcondition_tax_id"
+                      ,columnsForm: [
+                                      {tableName:"cnf_tax",columnName:"name",inputType:"text"}
+                                      ]}
+               ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_taxcondition_tax",
+                title: "Condición de Impuestos por Impuesto",
+                foreignTables:[
+                    {tableName: "cnf_taxcondition",idValue:"cnf_taxcondition_id",descriptionColumn : "name"},
+                    {tableName: "cnf_tax",idValue:"cnf_tax_id",descriptionColumn : "name"}
+                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_taxgroup",
+                title: "Grupos de Impuestos",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                    
+                  ],
+                childTables:[
+                    {tableName: "cnf_tax",tableNameDetail: "cnf_taxgroup_tax",
+                      idValue:"cnf_taxgroup_tax_id"
+                      ,columnsForm: [
+                                      {tableName:"cnf_tax",columnName:"name",inputType:"text"}
+                                      ]}
+               ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_taxgroup_tax",
+                title: "Impuestos por Grupo",
+                foreignTables:[
+                    {tableName: "cnf_taxgroup",idValue:"cnf_taxgroup_id",descriptionColumn : "name"},
+                    {tableName: "cnf_tax",idValue:"cnf_tax_id",descriptionColumn : "name"}
+                    
+                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "inv_balance",
+                title: "Stock de productos",
+                foreignTables:[
+                    {tableName: "inv_warehouse",idValue:"inv_warehouse_id",descriptionColumn : "name"},
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                      {columnName:"updated",inputType:"text"},
+                                      {columnName:"balance",inputType:"text"}
+  
+                                  ],
+                  columnsList: 
+                                  [
+                                      {columnName:"updated",filterType:"text"},
+                                      {columnName:"balance",filterType:"text"}
+                                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_tendertype",
+                title: "Formas de pago",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"}
+                    
+                  ],
+                  childTables:[
+                    {tableName: "cnf_tendertype_schedule",tableNameDetail: "cnf_tendertype_schedule",
+                      idValue:"cnf_tendertype_schedule_id"
+                      ,columnsForm: [
+                                      {tableName:"cnf_tendertype_schedule", columnName:"daycount",inputType:"text"},
+                                      {tableName:"cnf_tendertype_schedule", columnName:"percent",inputType:"text"},
+                                      {tableName:"cnf_tendertype_schedule", columnName:"amount",inputType:"text"}
+                                      ]}
+                  ],
+                  columnsForm: [
+                                      {columnName:"name",inputType:"text"},
+                                      {columnName:"value",inputType:"text"}
+  
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                  ]
+                 ,
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_invoice",
+                title: "Ventas",
+                foreignTables:[
+                    {tableName: "cnf_org",idValue:"cnf_org_id",descriptionColumn : "name"},
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"},
+                    {tableName: "cnf_doctype",idValue:"cnf_doctype_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "cnf_tendertype",idValue:"cnf_tendertype_id",descriptionColumn : "name"},
+                    {tableName: "cnf_currency",idValue:"cnf_currency_id",descriptionColumn : "name"},
+                    {tableName: "cnf_taxcondition",idValue:"cnf_taxcondition_id",descriptionColumn : "name"}
+                  ],
+                  childTables:[
+                      {tableName: "act_invoice_line",tableNameDetail: "act_invoice_line",
+                        idValue:"act_invoice_line_id"
+                        ,columnsForm: [
+                                        {tableName:"cnf_product", columnName:"name",inputType:"select"},
+                                        {tableName:"cnf_taxcondition", columnName:"name",inputType:"select"},
+                                        {tableName:"cnf_taxcondition_tax", columnName:"name",inputType:"select"},
+                                        {tableName:"act_invoice_line",columnName:"unitprice",inputType:"text"},
+                                        {tableName:"act_invoice_line",columnName:"qty",inputType:"number"},
+                                        {tableName:"act_invoice_line",columnName:"linetotal",inputType:"number"}
+                                        ]}
+                ],
+                columnsForm: [
+                                    {columnName:"documentserial",inputType:"number"},
+                                    {columnName:"documentno",inputType:"number"},
+                                    {columnName:"issuedate",inputType:"text"},
+                                    {columnName:"duedate",inputType:"text"},
+                                    {columnName:"issale",inputType:"text"},
+                                    {columnName:"isinventory",inputType:"text"},
+                                    {columnName:"status",inputType:"text"},
+                                    {columnName:"grandtotal",inputType:"text"}
+                                   
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"documentserial",filterType:"number"},
+                                    {columnName:"documentno",filterType:"number"},
+                                    {columnName:"issuedate",filterType:"text"},
+                                    {columnName:"duedate",filterType:"text"},
+                                    {columnName:"issale",filterType:"text"},
+                                    {columnName:"isinventory",filterType:"text"},
+                                    {columnName:"status",filterType:"text"},
+                                    {columnName:"grandtotal",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_invoice_line",
+                title: "Detalle de Factura",
+                foreignTables:[
+                    {tableName: "act_invoice",idValue:"act_invoice_id",descriptionColumn : "name"},
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"},
+                    {tableName: "cnf_taxcondition",idValue:"cnf_taxcondition_id",descriptionColumn : "name"},
+                    {tableName: "cnf_taxcondition_tax",idValue:"cnf_taxcondition_tax_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"unitprice",inputType:"text"},
+                                    {columnName:"qty",inputType:"number"},
+                                    {columnName:"linetotal",inputType:"number"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"unitprice",filterType:"text"},
+                                    {columnName:"qty",filterType:"number"},
+                                    {columnName:"linetotal",filterType:"number"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_movementreason",
+                title: "Motivo de Movimiento",
+                foreignTables:[
+                    {tableName: "cnf_tenant",idValue:"cnf_tenant_id",descriptionColumn : "name"},
+                    {tableName: "cnf_taxgroup",idValue:"cnf_taxgroup_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"name",inputType:"text"},
+                                    {columnName:"value",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"name",filterType:"text"},
+                                    {columnName:"value",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "inv_document",
+                title: "Guia de Entrada/Salida",
+                foreignTables:[
+                    {tableName: "inv_warehouse",idValue:"inv_warehouse_id",descriptionColumn : "name"},
+                    {tableName: "cnf_doctype",idValue:"cnf_doctype_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner",idValue:"cnf_bpartner_id",descriptionColumn : "name"},
+                    {tableName: "cnf_bpartner_location",idValue:"cnf_bpartner_location",descriptionColumn : "name"},
+                    {tableName: "cnf_movementreason",idValue:"cnf_movementreason_id",descriptionColumn : "name"},
+                  ],
+                  childTables:[
+                      {tableName: "inv_document_line",tableNameDetail: "inv_document_line",
+                        idValue:"inv_document_line_id"
+                        ,columnsForm: [
+                                        {tableName:"cnf_product", columnName:"name",inputType:"select"},
+                                        {tableName:"inv_document_line", columnName:"totalqty",inputType:"select"}
+                                        ]}
+                ],
+                columnsForm: [
+                                    {columnName:"dateacct",inputType:"text"},
+                                    {columnName:"documentserial",inputType:"number"},
+                                    {columnName:"documentno",inputType:"number"},
+                                    {columnName:"description",inputType:"text"},
+                                    {columnName:"movementstartdate",inputType:"text"},
+                                    {columnName:"isout",inputType:"text"},
+                                    {columnName:"status",inputType:"text"}
+                                   
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"documentserial",filterType:"number"},
+                                    {columnName:"documentno",filterType:"number"},
+                                    {columnName:"description",filterType:"text"},
+                                    {columnName:"movementstartdate",filterType:"text"},
+                                    {columnName:"isout",filterType:"text"},
+                                    {columnName:"status",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "inv_document_line",
+                title: "Detalle de Factura",
+                foreignTables:[
+                    {tableName: "inv_document",idValue:"inv_document_id",descriptionColumn : "name"},
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"totalqty",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"totalqty",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_invoice_tax",
+                title: "Impuestos por Factura",
+                foreignTables:[
+                    {tableName: "act_invoice",idValue:"act_invoice_id",descriptionColumn : "description"},
+                    {tableName: "cnf_tax",idValue:"cnf_tax_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"baseamt",inputType:"text"},
+                                    {columnName:"taxtotal",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"baseamt",filterType:"text"},
+                                    {columnName:"taxtotal",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_order_tax",
+                title: "Impuestos por Orden",
+                foreignTables:[
+                    {tableName: "act_order",idValue:"act_order_id",descriptionColumn : "description"},
+                    {tableName: "cnf_tax",idValue:"cnf_tax_id",descriptionColumn : "name"}
+                    
+                  ],
+                columnsForm: [
+                                    {columnName:"baseamt",inputType:"text"},
+                                    {columnName:"taxtotal",inputType:"text"}
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"baseamt",filterType:"text"},
+                                    {columnName:"taxtotal",filterType:"text"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "inv_movement",
+                title: "Guia de Entrada/Salida",
+                foreignTables:[
+                    {tableName: "inv_warehouse",idValue:"inv_warehouse_id",descriptionColumn : "name"},
+                    {tableName: "cnf_product",idValue:"cnf_product_id",descriptionColumn : "name"},
+                    {tableName: "act_invoice",idValue:"act_invoice_id",descriptionColumn : "name"},
+                    {tableName: "inv_document",idValue:"inv_document_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"dateacct",inputType:"text"},
+                                    {columnName:"created",inputType:"number"},
+                                    {columnName:"qty",inputType:"number"}
+                                   
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"created",filterType:"number"},
+                                    {columnName:"qty",filterType:"number"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "ex_job",
+                title: "Guia de Entrada/Salida",
+                foreignTables:[
+                    {tableName: "sec_user",idValue:"sec_user_id",descriptionColumn : "name"},
+                    {tableName: "sec_node",idValue:"sec_node_id",descriptionColumn : "name"}
+                  ],
+                columnsForm: [
+                                    {columnName:"created",inputType:"text"},
+                                    {columnName:"params",inputType:"number"},
+                                    {columnName:"status",inputType:"number"}
+                                   
+
+                                ],
+                columnsList: 
+                                [
+                                    {columnName:"created",filterType:"text"},
+                                    {columnName:"params",filterType:"number"},
+                                    {columnName:"status",filterType:"number"}
+                                ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "cnf_tendertype_schedule",
+                title: "Programa por formas de pago",
+                foreignTables:[
+                    {tableName: "cnf_tendertype",idValue:"cnf_tendertype_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                      {columnName:"daycount",inputType:"text"},
+                                      {columnName:"percent",inputType:"text"},
+                                      {columnName:"amount",inputType:"text"}
+  
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"daycount",filterType:"text"},
+                                    {columnName:"percent",filterType:"text"},
+                                    {columnName:"amount",filterType:"text"}
+                                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_payment",
+                title: "Pagos",
+                foreignTables:[
+                    {tableName: "act_invoice",idValue:"act_invoice_id",descriptionColumn : "documentno"}
+                    
+                  ],
+                  childTables:[
+                      {tableName: "act_payment_detail",tableNameDetail: "act_payment_detail",
+                        idValue:"act_payment_detail_id"
+                        ,columnsForm: [
+                                        {tableName:"act_payment_detail", columnName:"dateacct",inputType:"text"},
+                                        {tableName:"act_payment_detail", columnName:"totalamt",inputType:"text"}
+                                        ]}
+                  ],
+                  columnsForm: [
+                                      {columnName:"dateacct",inputType:"text"},
+                                      {columnName:"duedate",inputType:"text"},
+                                      {columnName:"totalamt",inputType:"text"},
+                                      {columnName:"pendingamt",inputType:"text"}
+  
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"duedate",filterType:"text"},
+                                    {columnName:"totalamt",filterType:"text"},
+                                    {columnName:"pendingamt",filterType:"text"}
+                                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "act_payment_detail",
+                title: "Detalle de Pagos",
+                foreignTables:[
+                    {tableName: "act_payment",idValue:"act_payment_id",descriptionColumn : "name"}
+                    
+                  ],
+                  columnsForm: [
+                                      {columnName:"dateacct",inputType:"text"},
+                                      {columnName:"totalamt",inputType:"text"}
+  
+                                  ],
+                  columnsList: 
+                                  [
+                                    {columnName:"dateacct",filterType:"text"},
+                                    {columnName:"totalamt",filterType:"text"}
+                                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: true
+            },
+            {
+                tableName: "sec_auditlog",
+                title: "Auditoria",
+                columnsForm: [
+                                      {columnName:"created",inputType:"text"},
+                                      {columnName:"createdby",inputType:"text"},
+                                      {columnName:"tablename",inputType:"text"},
+                                      {columnName:"prevdata",inputType:"text"},
+                                      {columnName:"newdata",inputType:"text"},
+                                      {columnName:"extradata",inputType:"text"},
+                                      {columnName:"action",inputType:"text"},
+                                      {columnName:"rowid",inputType:"text"},
+                                      {columnName:"rowname",inputType:"text"}
+  
+                                  ],
+                columnsList: 
+                                  [
+                                    {columnName:"created",filterType:"text"},
+                                      {columnName:"createdby",filterType:"text"},
+                                      {columnName:"tablename",filterType:"text"},
+                                      {columnName:"prevdata",filterType:"text"},
+                                      {columnName:"newdata",filterType:"text"},
+                                      {columnName:"extradata",filterType:"text"},
+                                      {columnName:"action",filterType:"text"},
+                                      {columnName:"rowid",filterType:"text"},
+                                      {columnName:"rowname",filterType:"text"}
+                                  ],
+                typeDeleteVoid: "2",
+                regenerate:true,
+                generateFrontend: false
+            }
+        ]
+    
+   
+    
+}
+//--sec_user 
+//1) en proyecto ya creado
+//rutal models
+//ruta repositry
+//ruta service
+//ruta controllers
+//2) crear todo el proyecto

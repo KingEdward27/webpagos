@@ -1,0 +1,124 @@
+body {
+    font: 14px/1.5 sans-serif;
+    font-family: Arial,Verdana;
+  }
+  
+  dt {
+    font-weight: bold;
+  }
+  label{
+    font-weight: bold;
+    font-size: 16px;
+  }
+  dl {
+    margin-bottom: 50px;
+  }
+  .form-control-sm{
+    border: solid 1px #CCC;
+    border-radius: 6px 6px 6px 6px;
+  }
+  .form-control-sm-dp{
+    border: solid 1px #CCC;
+    border-radius: 6px 0px 0px 6px;
+    font: 12px/1.5 sans-serif !important;
+    padding-left: 8px !important;
+  }
+  .button-dp{
+    border: solid 1px #CCC;
+    border-radius: 0px 6px 6px 0px !important;
+  }
+  .btn-primary{
+    border-radius: 8px;
+  }
+  .panel .panel-heading .panel-title{
+    font-size: 16px;
+  }
+  body table.dataTable thead tr th.sorting:after,
+  body table.dataTable thead tr th.sorting_asc:after,
+  body table.dataTable thead tr th.sorting_desc:after {
+    opacity: 0;
+  }
+  table> tr > th > input{
+    width: 90%;
+  }
+  .table-striped tbody tr:nth-of-type(odd){
+    background-color: #ECECEC;
+  }
+  .alert-danger{
+    padding: 0;
+    margin-bottom: 0;
+    /*color: red;*/
+    /*background-color: transparent;*/
+  }
+  /*.alert.alert-danger {
+    color: red;
+    background-color: transparent;
+  }*/
+
+  
+  /* .form-group{
+    height: 1rem;
+  }
+  @media (max-width: 540px){
+    .form-group{
+      height: 0.75rem;
+    }
+}
+   */
+
+  /* .form-control{
+    height: 20px;
+  } */
+  #bug:target {
+    outline: 4px solid #ccc;
+  }
+ .container{
+   padding-top: 20px;
+   margin-left: 0px;
+ }
+  .card-header:first-child {
+        border-radius: 8px 8px 0 0;
+    }
+  .card-header{
+    background: rgb(1,0,8);
+background: linear-gradient(0deg, rgba(1,0,8,1) 3%, rgba(79,82,107,1) 100%, rgba(70,132,176,1) 100%, rgba(0,212,255,1) 100%);
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 8px 6px 6px 16px;
+      position: relative;
+      top: -30px;
+      z-index: 0;
+  }
+  .card-body{
+    position: relative;
+    z-index: 1;
+  }
+  .card-title{
+    position: relative;
+    font-size: 20px;
+    top: -20px;
+    margin-bottom: 0px;
+  }
+  input:hover{
+    border: solid 1px;
+  }
+  .table-responsive{
+    display: block;
+    width: 100%;
+    overflow-x: initial;
+  }
+  .row2 {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .table thead th {
+    vertical-align: middle;
+  }
+  table.dataTable thead th, table.dataTable thead td {
+    padding: 8px 16px !important;
+  }
+  table.dataTable tbody th, table.dataTable tbody td {
+    padding: 2px 5px !important;
+    overflow-x: auto;
+  }
